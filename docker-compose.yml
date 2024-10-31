@@ -39,7 +39,7 @@ services:
       PGADMIN_DEFAULT_EMAIL: example@example.com
       PGADMIN_DEFAULT_PASSWORD: password  # pgAdminのデフォルトのメールアドレスとパスワードを設定します
     depends_on:
-      - service_postgres  # service_postgresサービスが起動した後にservice_pgadminサービスを起動します
+      - postgresql   # service_postgresサービスが起動した後にservice_pgadminサービスを起動します
 
 volumes:
   volume_postgres:
