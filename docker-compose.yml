@@ -4,7 +4,7 @@ services:
     ports:
       - "5000:5000"  # ホストの5000番ポートをコンテナの5000番ポートにマッピングします
     volumes:
-      - ./src/flask_postgresql_sample:/app  # ホストの指定したディレクトリをコンテナの/appディレクトリにマッピングします
+      - ./src/app:/app  # ホストの指定したディレクトリをコンテナの/appディレクトリにマッピングします
     depends_on:
       - postgresql  # postgresqlサービスが起動した後にflaskサービスを起動します
     environment:

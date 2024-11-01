@@ -1,9 +1,9 @@
 [project]
-name = "flask-postgresql-sample"
+name = "cec"
 version = "0.1.0"
-description = "Add your description here"
+description = ""
 authors = [
-    { name = "Haruki Ise", email = "hise@umn.co.jp" }
+    { name = "Tsuru Takeshi", email = "t-tsuru@kiei-inc.com" }
 ]
 dependencies = [
     "flask>=3.0.3",
@@ -23,4 +23,4 @@ dev-dependencies = []
 allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/flask_postgresql_sample"]
+packages = ["src/app"]

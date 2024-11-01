@@ -8,8 +8,8 @@ WORKDIR /app
 RUN pip install --upgrade pip
 
 # 依存関係をインストール
-COPY ./src/flask_postgresql_sample/app.py /app/app.py
-COPY ./src/flask_postgresql_sample/out /app/out 
+COPY ./src/app/app.py /app/app.py
+COPY ./src/app/front/out /app/front/out 
 COPY requirements.lock requirements.lock
 COPY pyproject.toml pyproject.toml
 COPY README.md README.md
