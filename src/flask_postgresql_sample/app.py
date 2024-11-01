@@ -1,11 +1,12 @@
-from flask import Flask
-app = Flask(__name__)
+from flask import Flask, send_from_directory
 
-# http://127.0.0.1:5000をルートとして、("")の中でアクセスポイント指定
-# @app.route("hoge")などで指定すると、http://127.0.0.1:5000/hogeでの動作を記述できる。
+app = Flask(__name__, static_folder="out", static_url_path="")
+
+
 @app.route("/")
-def hello():
-    return "Hello World!"
+def index():
+    return send_from_directory("out", "index.html")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
