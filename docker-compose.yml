@@ -1,6 +1,8 @@
 services:
   flask:
-    build: .  # 現在のディレクトリにあるDockerfileを使用してFlaskアプリケーションのイメージをビルドします
+    build:
+      context: .
+      dockerfile: DockerFile.flask  # カスタムDockerfileを指定します
     ports:
       - "5000:5000"  # ホストの5000番ポートをコンテナの5000番ポートにマッピングします
     volumes:
@@ -11,13 +13,19 @@ services:
       DATABASE_URL: postgresql://postgres:postgres@postgresql/postgres  # 環境変数を設定します
 
   postgresql:
-    image: postgres:latest  # 最新のPostgreSQLイメージを使用します
+    build:
+      context: .
+      dockerfile: DockerFile.postgres
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres  # PostgreSQLのユーザー名、パスワード、データベース名を設定します
+      POSTGRES_DB: postgres
+      POSTGRES_INITDB_ARGS: "--shared_preload_libraries=pgvector"  # shared_preload_libraries の設定を追加
     ports: 
-      - "5432:5432"  # ホストの5432番ポートをコンテナの5432番ポートにマッピングします
+      - "5432:5432"
+    volumes:
+      - volume_postgres:/var/lib/postgresql/data
+
 
   nginx:
     image: nginx:latest  # 最新のNginxイメージを使用します

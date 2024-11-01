@@ -1,0 +1,12 @@
+FROM postgres:latest
+
+# 必要なバージョンの pgvector をインストール
+RUN apt-get update && \
+    apt-get install -y postgresql-contrib postgresql-15-pgvector && \
+    rm -rf /var/lib/apt/lists/*
+
+# postgresユーザーに切り替える
+USER postgres
+
+# 初期化SQLファイルをコピー
+COPY --chown=postgres:postgres ./init.sql /docker-entrypoint-initdb.d/
