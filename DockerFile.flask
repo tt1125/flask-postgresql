@@ -10,6 +10,7 @@ RUN pip install --upgrade pip
 # 依存関係をインストール
 COPY ./src/app/app.py /app/app.py
 COPY ./src/app/front/out /app/front/out 
+COPY ./src/app/lib /app/lib
 COPY requirements.lock requirements.lock
 COPY pyproject.toml pyproject.toml
 COPY README.md README.md
